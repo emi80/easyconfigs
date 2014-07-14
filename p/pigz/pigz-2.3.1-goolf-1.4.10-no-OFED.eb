@@ -1,0 +1,25 @@
+easyblock = 'MakeCp'
+
+name = 'pigz'
+version = '2.3.1'
+
+homepage = 'http://zlib.net/pigz'
+description = """A parallel implementation of gzip for modern multi-processor, multi-core machines"""
+
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = [homepage]
+
+dependencies = [('zlib','1.2.7')]
+
+files_to_copy = [(['pigz'],'bin'), (['unpigz'],'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/pigz','bin/unpigz'],
+    'dirs': ['bin']
+}
+
+sanity_check_commands = [True, ('pigz', '--version')]
+
+moduleclass = 'tools'

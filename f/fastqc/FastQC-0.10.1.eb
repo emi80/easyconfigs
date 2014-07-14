@@ -1,0 +1,23 @@
+# need to change permission for the 'fastqc' executable after install 
+# TODO: implement fastqc easyblock
+easyblock = 'PackedBinary'
+
+name = 'FastQC'
+version = '0.10.1'
+
+homepage = 'http://www.bioinformatics.babraham.ac.uk/projects/fastqc'
+description = """A quality control tool for high throughput sequence data."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [homepage]
+sources = ['%(namelower)s_v%(version)s.zip']
+
+dependencies = [('Java', '1.7.0_21')]
+
+sanity_check_paths = {
+    'files': ['fastqc', 'jbzip2-0.9.jar', 'sam-1.32.jar'],
+    'dirs': ['Contaminants', 'Help', 'Templates', 'uk']
+}
+
+moduleclass = 'bio'
