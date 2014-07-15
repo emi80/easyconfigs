@@ -17,7 +17,7 @@ sources = ['%(namelower)s-%(version)s.tar.gz']
 
 dependencies = [('zlib','1.2.7')]
 
-patches = ['RSEM-1.2.15-Makefile.patch']
+patches = ['%(name)s-%(version)s-Makefile.patch']
 
 makeopts = ['CFLAGS="`pkg-config --cflags --libs zlib`"']
 
