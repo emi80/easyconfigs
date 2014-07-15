@@ -1,0 +1,82 @@
+easyblock = 'PackedBinary'
+exts_defaultclass = 'PackedBinary'
+
+name = "RepeatMasker" # tweaked by EasyBuild (was: 'NAME')
+version = "4.0.5" # tweaked by EasyBuild (was: 'VERSION')
+
+homepage = 'http://www.repeatmasker.org/'
+description = """A program that screens DNA sequences for interspersed repeats and low complexity DNA sequences"""
+
+# toolchain name should be 'TEMPLATE' if this is a template, so EasyBuild knows and is willing to use it as a template
+toolchain = {'version': 'dummy', 'name': 'dummy'} # tweaked by EasyBuild (was: {'name': 'TEMPLATE', 'version': 'TK_VERSION'})
+
+dashversion = version.replace(".","-")
+
+sources = ['%(name)s-open-{0}.tar.gz'.format(dashversion)]
+source_urls = [homepage]
+
+exts_list = [
+    ('repeatmaskerlibraries','20140131', {
+        'source_urls': ['http://www.girinst.org/server/RepBase/protected/repeatmaskerlibraries'],
+        'source_tmpl': '%(name)s-%(version)s.tar.gz',
+    }),
+    ('Dfam', '1.2', {
+        'source_urls': ['ftp://selab.janelia.org/pub/dfam/Release/%(name)s_%(version)s'],
+        'source_tmpl': '%(name)s.hmm.gz',
+    }),
+
+]
+
+sanity_check_paths = {
+    'files': [
+        "SeqDBI.pm",
+        "NCBIBlastSearchEngine.pm",
+        "ArrayListIterator.pm",
+        "SimpleBatcher.pm",
+        "RepbaseEMBL.pm",
+        "Matrix.pm",
+        "WUBlastSearchEngine.pm",
+        "TRFResult.pm",
+        "PubRef.pm",
+        "HMMERSearchEngine.pm",
+        "RepbaseRecord.pm",
+        "FastaDB.pm",
+        "DFAM.pm",
+        "TRF.pm",
+        "WUBlastXSearchEngine.pm",
+        "PRSearchResult.pm",
+        "ProcessRepeats",
+        "RepeatMasker",
+        "RepeatProteinMask",
+        "configure",
+        "SearchResult.pm",
+        "DFAMRecord.pm",
+        "NCBIBlastXSearchEngine.pm",
+        "RepeatMaskerConfig.tmpl",
+        "TRFSearchResult.pm",
+        "Taxonomy.pm",
+        "LineHash.pm",
+        "DupMasker",
+        "DeCypherSearchEngine.pm",
+        "SearchEngineI.pm",
+        "DateRepeats",
+        "CrossmatchSearchEngine.pm",
+        "ArrayList.pm",
+        "SearchResultCollection.pm",
+        "Libraries/RepeatPeps.readme",
+        "Libraries/Dfam.hmm",
+        "Libraries/taxonomy.dat",
+        "Libraries/RepeatAnnotationData.pm",
+        "Libraries/RepeatPeps.lib",
+        "Libraries/RepeatMaskerLib.embl",
+
+    ],
+    'dirs': [
+        "util",
+        "Matrices",
+        "Libraries",
+        "Libraries/20140131"
+    ]
+}
+
+moduleclass = 'bio'
