@@ -1,0 +1,18 @@
+--- rsem-1.1.17/makefile.orig	2014-07-15 18:14:15.512907541 +0200
++++ rsem-1.1.17/makefile	2014-07-15 18:14:40.422496798 +0200
+@@ -1,12 +1,12 @@
+-CC = g++
++CC = g++ $(CFLAGS)
+ CFLAGS = -Wall -c -I.
+ COFLAGS = -Wall -O3 -ffast-math -c -I.
+ PROGRAMS = rsem-extract-reference-transcripts rsem-synthesis-reference-transcripts rsem-preref rsem-parse-alignments rsem-build-read-index rsem-run-em rsem-tbam2gbam rsem-run-gibbs rsem-calculate-credibility-intervals rsem-simulate-reads rsem-bam2wig rsem-get-unique rsem-bam2readdepth
+ 
+ 
+-all : build-sam $(PROGRAMS)
++all : $(PROGRAMS)
+ 
+-build-sam : 
++sam/libbam.a : 
+ 	cd sam ; ${MAKE} all
+ 
+ Transcript.h : utils.h
