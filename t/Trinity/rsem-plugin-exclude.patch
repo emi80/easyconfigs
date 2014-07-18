@@ -1,0 +1,9 @@
+--- trinityrnaseq_r20140717/trinity-plugins/Makefile.orig	2014-07-18 13:33:47.786858618 +0200
++++ trinityrnaseq_r20140717/trinity-plugins/Makefile	2014-07-18 13:33:58.346720094 +0200
+@@ -1,5 +1,5 @@
+ 
+-TARGETS=jellyfish rsem transdecoder others
++TARGETS=jellyfish transdecoder others
+ 
+ 
+ JELLYFISH_CODE="jellyfish-2.1.3"

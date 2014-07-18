@@ -1,0 +1,62 @@
+easyblock = 'MakeCp'
+
+name = 'Trinity'
+version = '20140717'
+
+homepage = 'http://trinityrnaseq.sourceforge.net/'
+description = """Trinity represents a novel method for the efficient and robust de novo reconstruction
+ of transcriptomes from RNA-Seq data. Trinity combines three independent software modules: Inchworm,
+ Chrysalis, and Butterfly, applied sequentially to process large volumes of RNA-Seq reads."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+toolchainopts = {'optarch': True}
+
+source_urls = [('http://sourceforge.net/projects/trinityrnaseq/files', 'download')]
+sources = ['trinityrnaseq_r%s.tar.gz' % version]
+
+java = 'Java'
+javaver = '1.7.0_21'
+
+patches = [
+    'rsem-plugin-exclude.patch',
+]
+
+dependencies = [
+    (java, javaver, '', True),
+    ('ant', '1.9.0', '-%s-%s' % (java, javaver), True),
+    ('ncurses', '5.9'),
+    ('zlib', '1.2.7'),
+    ('RSEM','1.2.15'),
+]
+
+files_to_copy = [
+    "Trinity",
+    "Analysis",
+    "Butterfly",
+    "Chrysalis",
+    "docs",
+    "galaxy-plugin",
+    "htc_conf",
+    "Inchworm",
+    "LICENSE.txt",
+    "Makefile",
+    "notes",
+    "PerlLib",
+    "README",
+    "Release.Notes",
+    "sample_data",
+    "trinity-plugins",
+    "util",
+]
+
+modextrapaths = {
+    'PATH': '',
+    'PERL5LIB': 'PerlLib',
+}
+
+sanity_check_paths = {
+    'files': ['Trinity'],
+    'dirs': files_to_copy[1:],
+}
+
+moduleclass = 'bio'
