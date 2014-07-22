@@ -1,3 +1,5 @@
+easyblock = "MakeCp"
+
 name = 'Bowtie'
 version = '1.0.1'
 

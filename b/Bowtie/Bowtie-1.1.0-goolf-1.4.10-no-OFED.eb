@@ -1,0 +1,26 @@
+easyblock = "MakeCp"
+
+name = 'Bowtie'
+version = '1.1.0'
+
+homepage = 'http://bowtie-bio.sourceforge.net/index.shtml'
+description = """Bowtie is an ultrafast, memory-efficient short read aligner.
+It aligns short DNA sequences (reads) to the human genome.
+"""
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'} 
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ['%(namelower)s-%(version)s-src.zip']
+source_urls = ['http://download.sourceforge.net/bowtie-bio/']
+
+files_to_copy = [
+    (["bowtie", "bowtie-align-l", "bowtie-align-s", "bowtie-build", "bowtie-build-l", "bowtie-build-s",
+     "bowtie-inspect", "bowtie-inspect-l", "bowtie-inspect-s"], 'bin'),
+    "doc", "genomes", "indexes", "reads", "scripts", "MANUAL", "MANUAL.markdown", "NEWS"]
+
+sanity_check_paths = {
+    'files': ["bin/bowtie-align-l", "bin/bowtie-build", "bin/bowtie-inspect"],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
