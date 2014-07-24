@@ -1,0 +1,23 @@
+easyblock = "MakeCp"
+
+name = 'STAR'
+version = '2.3.1z12'
+
+homepage = 'https://github.com/alexdobin/STAR'
+description = """Spliced Transcripts Alignment to a Reference"""
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'} 
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ['%(name)s_%(version)s.tar.gz']
+source_urls = ['https://github.com/alexdobin/STAR/archive/']
+
+files_to_copy = [
+     (["STAR"], 'bin'),
+]
+
+sanity_check_paths = {
+    'files': ["bin/STAR"],
+    'dirs': [],
+}
+
+moduleclass = 'bio'

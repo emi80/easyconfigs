@@ -1,0 +1,26 @@
+--- STAR-STAR_2.3.1z9/Makefile.orig	2014-06-20 22:48:24.000000000 +0200
++++ STAR-STAR_2.3.1z9/Makefile	2014-07-22 17:35:29.747748663 +0200
+@@ -13,9 +13,9 @@
+         BAMoutput.o BAMfunctions.o ReadAlign_alignBAM.o BAMbinSortByCoordinate.o signalFromBAM.o
+ SOURCES=$(wildcard *.cpp)
+ LDDIRS :=/sonas-hs/gingeras/nlsas_norepl/user/dobin/Software/ZLIB/zlib-1.2.8_installed/lib/
+-LDFLAGS := -pthread -lz -Lsamtools -lbam
+-LDFLAGS_static := -static -static-libgcc -pthread -L$(LDDIRS) -Lsamtools -lbam -lz
+-LDFLAGS_GDB := -pthread -lz -Lsamtools -lbam
++override LDFLAGS += -pthread -lz -lbam
++override LDFLAGS_static += -static -static-libgcc -pthread -L$(LDDIRS) -Lsamtools -lbam -lz
++override LDFLAGS_GDB += -pthread -lz -lbam
+ SVNDEF := -D'SVN_VERSION_COMPILED="STAR_2.3.1z9_r449"'
+ COMPTIMEPLACE := -D'COMPILATION_TIME_PLACE="$(shell echo `date` $(HOSTNAME):`pwd`)"'
+ #OPTIMFLAGS=-fforce-addr -funsafe-loop-optimizations -ftree-loop-linear -ftree-vectorize 
+@@ -23,8 +23,8 @@
+ #OPTIMFLAGS=-fprofile-generate
+ #OPTIMFLAGS=-fprofile-use
+ #OPTIMFLAGS=-D_GLIBCXX_PARALLEL
+-CCFLAGS_MAIN := -pipe -std=c++0x -O3    -Wall -Wextra -fopenmp $(SVNDEF) $(COMPTIMEPLACE) $(OPTIMFLAGS) $(OPTIMFLAGS1) -Isamtools
+-CCFLAGS_GDB := -pipe  -std=c++0x -g -O0 -Wall -Wextra -fopenmp $(SVNDEF) $(COMPTIMEPLACE) -Isamtools
++override CCFLAGS_MAIN += -pipe -std=c++0x -O3    -Wall -Wextra -fopenmp $(SVNDEF) $(COMPTIMEPLACE) $(OPTIMFLAGS) $(OPTIMFLAGS1)
++override CCFLAGS_GDB += -pipe  -std=c++0x -g -O0 -Wall -Wextra -fopenmp $(SVNDEF) $(COMPTIMEPLACE) 
+ CC :=g++
+ GCC:=gcc
+ #CC :=/data/gingeras/user/dobin/Software/GCC/4.7.0/install/bin/g++
