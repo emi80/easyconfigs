@@ -48,6 +48,7 @@ binaries = [
     "rsem-generate-ngvector",
     "rsem-calculate-expression",
     "rsem-simulate-reads",
+    "rsem_perl_utils.pm",
 ]
 
 files_to_copy = [(binaries, 'bin')]
