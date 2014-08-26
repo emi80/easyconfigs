@@ -1,7 +1,3 @@
-# need to change permission for the 'fastqc' executable after install 
-# TODO: implement fastqc easyblock
-easyblock = 'PackedBinary'
-
 name = 'FastQC'
 version = '0.10.1'
 
