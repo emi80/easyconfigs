@@ -1,0 +1,23 @@
+name = 'AsperaConnect'
+version = '3.1.1.70545'
+
+homepage = 'http://asperasoft.com/'
+description = """Aspera linux client application for high-speed fasp-powered file transfers"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://download.asperasoft.com/download/sw/connect/%s/' % version[0:3]]
+sources = ['aspera-connect-%(version)s-linux-64.tar.gz']
+
+patches = ['aspera-%(version)s-install-dir.patch']
+
+modextravars = { 
+    'ASPERA_CONNECT_KEY': '%(installdir)s/etc/asperaweb_id_dsa.openssh',
+}
+
+sanity_check_paths = {
+    'files': ['product-info.mf'],
+    'dirs': ['bin', 'etc', 'lib', 'localization', 'var']
+}
+
+moduleclass = 'bio'

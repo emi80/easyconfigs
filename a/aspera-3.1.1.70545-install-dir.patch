@@ -1,0 +1,11 @@
+--- aspera-connect-3.1.1.70545-linux-64.sh.orig	2014-08-25 16:42:21.248961420 +0200
++++ aspera-connect-3.1.1.70545-linux-64.sh	2014-08-25 16:42:14.352991771 +0200
+@@ -8,7 +8,7 @@
+ SKIP=`awk '/^__ARCHIVE_FOLLOWS__/ { print NR + 1; exit 0; }' $0`
+ 
+ # Figure out the installation location
+-INSTALL_DIR=~/.aspera/connect
++INSTALL_DIR=${1-~/.aspera/connect}
+ NEED_DIR=0
+ mkdir -p $INSTALL_DIR 2>/dev/null || NEED_DIR=1 
+ 
