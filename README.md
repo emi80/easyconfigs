@@ -1,1 +1,1 @@
-Repository for EasyBuild easyconfig files
+Custom EasyBuild easyconfig files
