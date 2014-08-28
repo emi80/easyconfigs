@@ -1,0 +1,30 @@
+easyblock = "PythonPackage"
+
+name = 'idxtools'
+version = '0.9.1'
+
+homepage = 'https://pypi.python.org/pypi/idxtools'
+description = """Idxtools provides command line tools and APIs to perform operations on index files."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+python = 'Python'
+pyver = '2.7.3'
+pyshortver = '2.7'
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+]
+
+sanity_check_paths = {
+    'files': ['lib/python%s/site-packages/%%(name)s-%%(version)s-py%s.egg' % (pyshortver, pyshortver)],
+    'dirs': [],
+}
+
+options = {'modulename': 'indexfile'}
+
+moduleclass = 'bio'
