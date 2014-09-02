@@ -9,6 +9,10 @@ toolchain = {'name': 'dummy', 'version': 'dummy'}
 source_urls = [SOURCEFORGE_SOURCE]
 sources = ['%(name)s-tools-%(version)s.zip']
 
-dependencies = [('Java', '1.7.0_21')]
+java = 'Java'
+javaver = '1.7.0_21'
+versionsuffix = '-%s-%s' % (java, javaver)
+
+dependencies = [(java, javaver)]
 
 moduleclass = 'bio'
