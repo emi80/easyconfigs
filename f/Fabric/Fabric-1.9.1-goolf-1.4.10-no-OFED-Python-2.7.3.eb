@@ -1,0 +1,31 @@
+easyblock = "PythonPackage"
+
+name = 'Fabric'
+version = '1.9.1'
+
+homepage = 'https://pypi.python.org/pypi/fabric'
+description = """A simple, Pythonic tool for remote execution and deployment."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = [PYPI_SOURCE]
+sources = ['%(name)s-%(version)s.tar.gz']
+
+python = 'Python'
+pyver = '2.7.3'
+pyshortver = '2.7'
+eggdir = '%%(name)s-%%(version)s-py%s.egg' % pyshortver
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%s/site-packages/%s/%%(namelower)s' % (pyshortver, eggdir),  'lib/python%s/site-packages/%s/fabfile' % (pyshortver, eggdir)],
+}
+
+options = {'modulename': 'fabric'}
+
+moduleclass = 'devel'
