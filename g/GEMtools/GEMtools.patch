@@ -1,0 +1,20 @@
+--- setup.py.orig	2014-09-29 14:43:44.342224695 +0200
++++ setup.py	2014-09-29 14:44:12.691938355 +0200
+@@ -327,7 +327,7 @@
+ gemtools = Extension("gem.gemtools", sources=["python/src/gemtools_binding.c", "python/src/gemtools.pyx", "python/src/gemapi.pxd"],
+                     include_dirs=['GEMTools/include', 'GEMTools/resources/include/'],
+                     library_dirs=['GEMTools/lib'],
+-                    libraries=['z', 'bz2', 'gemtools'],
++                    libraries=['gemtools', 'z', 'bz2'],
+                     extra_compile_args=['-fopenmp'],
+                     extra_link_args=["-fopenmp"]
+ )
+@@ -386,7 +386,7 @@
+           'Programming Language :: C',
+           'Topic :: Scientific/Engineering :: Bio-Informatics',
+         ],
+-        setup_requires=["cython==0.18"],
++        setup_requires=["cython>=0.18"],
+         install_requires=[
+                 "argparse",
+ #                "numpy==1.7.0",
