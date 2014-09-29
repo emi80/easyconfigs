@@ -1,0 +1,36 @@
+easyblock = "PythonPackage"
+
+name = 'Gemtools'
+version = '1.6.2'
+
+homepage = 'https://pypi.python.org/pypi/gemtools'
+description = """Python support library for the GEM mapper and the gemtools library."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['https://github.com/gemtools/gemtools/archive']
+sources = ['v%(version)s.tar.gz']
+
+patches = ['GEMtools.patch']
+
+python = 'Python'
+pyver = '2.7.3'
+pyshortver = '2.7'
+eggdir = '%%(name)s-%%(version)s-py%s.egg-info' % pyshortver
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('Cython', '0.20.2', versionsuffix),
+    ('zlib','1.2.7'),
+    ('bzip2','1.0.6'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%s/site-packages/%s' % (pyshortver, eggdir),  'lib/python%s/site-packages/gem' % (pyshortver)],
+}
+
+options = {'modulename': 'gem'}
+
+moduleclass = 'bio'
