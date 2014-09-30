@@ -1,0 +1,61 @@
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics (SIB)
+# Biozentrum - University of Basel
+
+name = 'exonerate'
+version = '2.2.0'
+
+homepage = "https://www.ebi.ac.uk/~guy/exonerate/"
+description = """Exonerate is a generic tool for pairwise sequence comparison. It allows you to align 
+sequences using a many alignment models, using either exhaustive dynamic programming, or a variety of heuristics.
+"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['ihttps://www.ebi.ac.uk/~guy/exonerate']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = [
+    ('Autoconf', '2.69'),
+    ('Automake', '1.13.4'),
+    ('GLib', '2.34.3'),
+]
+
+preconfigopts = 'autoreconf --install --force --symlink && '
+
+binaries = [
+    'esd2esi',
+    'exonerate',
+    'exonerate-server',
+    'fasta2esd',
+    'fastaannotatecdna',
+    'fastachecksum',
+    'fastaclean',
+    'fastaclip',
+    'fastacomposition',
+    'fastadiff',
+    'fastaexplode',
+    'fastafetch',
+    'fastahardmask',
+    'fastaindex',
+    'fastalength',
+    'fastanrdb',
+    'fastaoverlap',
+    'fastareformat',
+    'fastaremove',
+    'fastarevcomp',
+    'fastasoftmask',
+    'fastasort',
+    'fastasplit',
+    'fastasubseq',
+    'fastatranslate',
+    'fastavalidcds',
+    'ipcress',
+]
+
+sanity_check_paths = {
+    'dirs': ['bin', 'share'],
+    'files': ['bin/%s' % x for x in binaries ] 
+}
+
+moduleclass = 'bio'
