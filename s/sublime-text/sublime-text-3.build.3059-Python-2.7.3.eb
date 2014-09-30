@@ -1,0 +1,37 @@
+easyblock = 'PackedBinary'
+
+name = 'sublime-text'
+version = '3.build.3059'
+arch = 'x64'
+
+homepage = 'http://www.sublimetext.com'
+description = """Sublime Text is a sophisticated text editor for code, markup and prose.
+You'll love the slick user interface, extraordinary features and amazing performance.
+"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['http://c758482.r82.cf2.rackcdn.com']
+sources = ['%s_%s_%s.tar.bz2' % (name.replace('-', '_'), version.replace('.', '_'), arch)]
+
+python = 'Python'
+pyver = '2.7.3'
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [(python, pyver)]
+
+sanity_check_paths = {
+    'dirs': ['Icon', 'Packages'],
+    'files': [
+        'changelog.txt',
+        'crash_reporter',
+        'plugin_host',
+        'python3.3.zip',
+        'sublime_plugin.py',
+        'sublime.py',
+        'sublime_text',
+        'sublime_text.desktop',
+    ],
+}
+
+moduleclass = 'tools'
