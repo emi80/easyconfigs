@@ -1,6 +1,6 @@
 easyblock = 'PackedBinary'
 
-name = 'sublime-text'
+name = 'sublime_text'
 version = '3.build.3059'
 arch = 'x64'
 
@@ -12,7 +12,7 @@ You'll love the slick user interface, extraordinary features and amazing perform
 toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
 
 source_urls = ['http://c758482.r82.cf2.rackcdn.com']
-sources = ['%s_%s_%s.tar.bz2' % (name.replace('-', '_'), version.replace('.', '_'), arch)]
+sources = ['%s_%s_%s.tar.bz2' % (name, version.replace('.', '_'), arch)]
 
 python = 'Python'
 pyver = '2.7.3'
