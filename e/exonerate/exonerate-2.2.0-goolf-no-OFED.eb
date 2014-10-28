@@ -12,7 +12,7 @@ sequences using a many alignment models, using either exhaustive dynamic program
 
 toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
 
-source_urls = ['ihttps://www.ebi.ac.uk/~guy/exonerate']
+source_urls = ['https://www.ebi.ac.uk/~guy/exonerate']
 sources = ['%(name)s-%(version)s.tar.gz']
 
 dependencies = [
