@@ -1,0 +1,38 @@
+easyblock = "PythonPackage"
+
+name = 'RSeQC'
+version = '2.3.9'
+platform = 'linux-x86_64'
+
+homepage = 'http://rseqc.sourceforge.net/'
+description = """RSeQC package provides a number of useful modules that can 
+comprehensively evaluate high throughput sequence data especially RNA-seq data."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['http://sourceforge.net/projects/rseqc/files', 'download']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+python = 'Python'
+pyver = '2.7.3'
+pyshortver = '2.7'
+eggdir = '%%(name)s-%%(version)s-py%s-%s.egg' % (pyshortver, platform)
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': [
+        'lib/python%s/site-packages/%s/qcmodule' % (pyshortver, eggdir),  
+        'lib/python%s/site-packages/%s/bx' % (pyshortver, eggdir),
+        'lib/python%s/site-packages/%s/bx_extras' % (pyshortver, eggdir),
+        'lib/python%s/site-packages/%s/pysam' % (pyshortver, eggdir),
+    ]
+}
+
+options = {'modulename': 'qcmodule'}
+
+moduleclass = 'tools'
