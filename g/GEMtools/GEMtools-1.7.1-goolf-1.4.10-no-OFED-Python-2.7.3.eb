@@ -1,22 +1,23 @@
 easyblock = "PythonPackage"
 
-name = 'Gemtools'
+name = 'GEMtools'
 version = '1.7.1'
 
-homepage = 'https://pypi.python.org/pypi/gemtools'
-description = """Python support library for the GEM mapper and the gemtools library."""
+homepage = 'http://gemtools.github.io/'
+description = """The GEMTools library and command line tools is a project created 
+to simplify the usage of the GEM Mapper in certain situations."""
 
 toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
 
-source_urls = [PYPI_SOURCE]
-sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['https://github.com/gemtools/gemtools/archive']
+sources = ['v%(version)s.tar.gz']
 
 patches = ['GEMtools.patch']
 
 python = 'Python'
 pyver = '2.7.3'
 pyshortver = '2.7'
-eggdir = '%%(name)s-%%(version)s-py%s.egg-info' % pyshortver
+eggdir = '%s-%%(version)s-py%s.egg-info' % (name.capitalize(), pyshortver)
 versionsuffix = '-%s-%s' % (python, pyver)
 
 dependencies = [
@@ -27,8 +28,11 @@ dependencies = [
 ]
 
 sanity_check_paths = {
-    'files': [],
-    'dirs': ['lib/python%s/site-packages/%s' % (pyshortver, eggdir),  'lib/python%s/site-packages/gem' % (pyshortver)],
+    'files': ['lib/python%s/site-packages/gem/gemtools.so' % pyshortver],
+    'dirs': [
+        'lib/python%s/site-packages/%s' % (pyshortver, eggdir),  
+        'lib/python%s/site-packages/gem' % (pyshortver)
+    ],
 }
 
 options = {'modulename': 'gem'}
