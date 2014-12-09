@@ -1,0 +1,10 @@
+--- kent/src/hg/makeDb/makefile.orig	2014-12-09 10:58:11.919421570 +0100
++++ kent/src/hg/makeDb/makefile	2014-12-09 10:58:34.428395677 +0100
+@@ -10,7 +10,6 @@
+ 	hgFindSpec \
+ 	hgLoadBed \
+ 	hgLoadOut \
+-	hgLoadOutJoined \
+ 	hgGcPercent \
+ 	hgLoadWiggle \
+ 	hgTrackDb \
