@@ -1,0 +1,28 @@
+easyblock = 'MakeCp'
+
+name = 'bamflag'
+version = 'master'
+
+homepage = 'https://github.com/pervouchine/bamflag'
+description = """Utility to mark the uniquely mapped reads in a bam file by updating the NH tag and/or by reporting only uniquely mapped reads"""
+
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+
+sources = ['%(version)s.zip']
+source_urls = ['https://github.com/pervouchine/bamflag/archive']
+
+dependencies = [
+    ('SAMtools', '0.1.19'),
+    ('zlib', '1.2.7')
+]
+
+makeopts = ['SAMDIR="$EBROOTSAMTOOLS/lib/" OPTN="-I$EBROOTSAMTOOLS/include/bam `pkg-config --cflags --libs zlib` -lpthread"']
+
+files_to_copy = [(['bamflag'],'bin'), (['bamflag2'],'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/bamflag','bin/bamflag2'],
+    'dirs': ['bin']
+}
+
+moduleclass = 'bio'
