@@ -1,0 +1,25 @@
+easyblock = 'ConfigureMake'
+
+name = 'tmux'
+version = '1.9a'
+main_version = version[:-1]
+
+homepage = 'http://tmux.sourceforge.net//'
+description = """tmux is a terminal multiplexer"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = [('http://sourceforge.net/projects/%%(name)s/files/%%(name)s/%%(name)s-%s' % (main_version),'download')]
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = [
+    ('libevent', '2.0.21'),
+    ('ncurses', '5.9')
+]
+
+sanity_check_paths = {
+    'dirs': ['bin', 'share'],
+    'files': [('tmux','bin')]
+}
+
+moduleclass = 'tools'
