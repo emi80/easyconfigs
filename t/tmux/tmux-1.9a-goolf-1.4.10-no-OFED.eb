@@ -1,5 +1,3 @@
-easyblock = 'ConfigureMake'
-
 name = 'tmux'
 version = '1.9a'
 main_version = version[:-1]
