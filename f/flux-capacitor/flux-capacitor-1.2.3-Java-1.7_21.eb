@@ -1,0 +1,20 @@
+easyblock = 'PackedBinary'
+
+name = 'flux-capacitor'
+version = '1.2.3'
+
+homepage = 'http://sammeth.net/confluence/display/FLUX/'
+description = """The Flux Capacitor is a computer program to quantify the expression of alternative isoforms."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+source_urls = ['http://sammeth.net/artifactory/barna/barna/barna.capacitor/%(version)s']
+sources = ['%(name)s-%(version)s.tgz']
+
+java = 'Java'
+javaver = '1.7.0_21'
+versionsuffix = '-%s-%s' % (java, javaver)
+
+dependencies = [(java, javaver)]
+
+moduleclass = 'bio'
