@@ -1,0 +1,35 @@
+easyblock = 'Binary'
+
+name = 'nextflow'
+version = '0.14.2'
+
+homepage = 'http://www.nextflow.io'
+description = """Nextflow is a fluent DSL modelled around the UNIX pipe concept, that simplifies writing parallel and scalable pipelines in a portable manner."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+source_urls = ['https://github.com/nextflow-io/nextflow/releases/download/v%(version)s']
+sources = ['%(name)s']
+
+java = 'Java'
+javaver = '1.7.0_21'
+versionsuffix = '-%s-%s' % (java, javaver)
+
+dependencies = [(java, javaver)]
+
+preinstallopts = 'chmod -R 755 nextflow; NXF_VER=%(version)s NXF_HOME=%(installdir)s nextflow;'
+install_cmd = 'cp -r * %(installdir)s'
+
+modextravars = {
+   'NXF_VER': '%(version)s',
+   'NXF_HOME': '%(installdir)s',
+   'NXF_ASSETS':'$::env(HOME)/.nextflow/assets',
+   'NXF_OPTS': '-Xmx4G'
+}
+
+sanity_check_paths = {
+    'files': ['nextflow'],
+    'dirs': []
+}
+
+moduleclass = 'tools'
