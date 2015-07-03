@@ -1,0 +1,14 @@
+--- misopy-0.5.2/setup.py.orig	2015-07-03 14:39:43.000000000 +0200
++++ misopy-0.5.2/setup.py	2015-07-03 14:42:23.000000000 +0200
+@@ -1,4 +1,10 @@
+-from distutils.core import setup, Extension
++try:
++    from setuptools import setup, Extension
++except:
++    from distribute_setup import use_setuptools
++    use_setuptools()
++    from setuptools import setup, Extension
++
+ import distutils.ccompiler
+ import glob
+ import os

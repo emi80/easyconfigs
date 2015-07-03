@@ -1,0 +1,64 @@
+# import platform to get system information
+import platform
+
+easyblock = "PythonPackage"
+
+name = 'miso'
+version = '0.5.2'
+
+homepage = 'http://genes.mit.edu/burgelab/miso/'
+description = """Probabilistic analysis and design of RNA-Seq 
+experiments for identifying isoform regulation"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['https://pypi.python.org/packages/source/m/%(name)spy']
+sources = ['%(name)spy-%(version)s.tar.gz']
+
+patches = ['install.patch']
+
+python = 'Python'
+pyver = '2.7.3'
+pyshortver = '2.7'
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('pysam', '0.8.0', versionsuffix),
+]
+
+pymods = ['misopy', 'pysplicing']
+
+eggdir = '%s-%%(version)s-py%s-%s-%s.egg' % (pymods[0], pyshortver, platform.system().lower(), platform.machine())
+binfiles = [
+    "compare_miso",
+    "cygdb",
+    "cython",
+    "exon_utils",
+    "filter_events",
+    "index_gff",
+    "miso",
+    "miso_pack",
+    "miso_zip",
+    "module_availability",
+    "nosetests",
+    "nosetests-2.7",
+    "pe_utils",
+    "plot.py",
+    "run_events_analysis.py",
+    "run_miso.py",
+    "sam_to_bam",
+    "sashimi_plot",
+    "summarize_miso",
+    "test_miso"
+]
+
+sanity_check_paths = {
+    'files': [ 'bin/%s' % (bin) for bin in binfiles ],
+    'dirs': [ 'lib/python%s/site-packages/%s' % (pyshortver, eggdir) ] + [ 'lib/python%s/site-packages/%s/%s' % (pyshortver, eggdir, mod) for mod in pymods ],
+}
+
+options = {'modulename': 'misopy' }
+
+moduleclass = 'bio'
+
