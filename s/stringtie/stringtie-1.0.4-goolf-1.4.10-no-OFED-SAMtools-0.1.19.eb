@@ -1,0 +1,29 @@
+easyblock = 'MakeCp'
+
+name = 'stringtie'
+version = "1.0.4" # tweaked by EasyBuild (was: '1.0.0')
+
+homepage = 'http://ccb.jhu.edu/software/stringtie'
+description = """StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts."""
+
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://ccb.jhu.edu/software/stringtie/dl']
+
+dependencies = [
+    ('SAMtools', '0.1.19'),
+    ('zlib', '1.2.7')
+]
+
+versionsuffix='-SAMtools-0.1.19'
+makeopts = ['release SEARCHDIRS="-I$EBROOTSAMTOOLS/include/bam -I./gclib" LIBS+="$(pkg-config --libs zlib)-lbam -lpthread" BAM="$EBROOTSAMTOOLS/lib"']
+
+files_to_copy = [(['stringtie'],'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/stringtie'],
+    'dirs': ['bin']
+}
+
+moduleclass = 'bio'
