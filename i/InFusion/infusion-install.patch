@@ -1,0 +1,11 @@
+--- a/install/create_binary_zip.sh	2015-10-28 16:53:28.106974553 +0100
++++ b/install/create_binary_zip.sh	2015-10-29 11:08:45.511037054 +0100
+@@ -2,7 +2,7 @@
+
+ PRODUCT_NAME="InFusion"
+ VERSION=`cat ../infusion.version`
+-RELEASE_DIR=../build/Release
++RELEASE_DIR=../easybuild_obj
+ OUT_DIR=_release
+ APP_DIR_NAME="${PRODUCT_NAME}-${VERSION}"
+ TARGET_APP_DIR=$OUT_DIR/$APP_DIR_NAME

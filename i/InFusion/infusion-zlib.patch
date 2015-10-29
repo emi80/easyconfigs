@@ -1,0 +1,33 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 5ee3105..c122989 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -17,16 +17,14 @@ add_definitions( -DINFUSION_VERSION="${INFUSION_VERSION}" )
+ message("Default compiler flags for debug mode are ${CMAKE_CXX_FLAGS_DEBUG}")
+ message("Default compiler flags for release mode are ${CMAKE_CXX_FLAGS_RELEASE}")
+ 
+-find_package( ZLIB REQUIRED )
+-message("ZLIB IS ${ZLIB_LIBRARIES}")
+-
++find_package( PkgConfig REQUIRED )
++pkg_check_modules( ZLIB REQUIRED zlib )
++message("zlib Link dir: ${ZLIB_LIBDIR}")
+ # Use BOOST_ROOT environment variable to set correct Boost location
+ # This is something painful if several versions of Boost are available
+ 
+ #set(Boost_DEBUG 1)
+ 
+-message("Boost root dir is $ENV{BOOST_ROOT}")
+-message("Boost library dir is $ENV{BOOST_LIBRARYDIR}")
+ #set(Boost_INCLUDE_DIR "$ENV{BOOST_ROOT}/include")
+ #set(Boost_LIBRARY_DIRS "$ENV{BOOST_ROOT}/lib")
+ 
+@@ -93,7 +91,7 @@ message("Adding executables")
+ 
+ foreach(program ${INFUSION_PROGRAMS})
+   add_executable(${program} ${program}.cpp)
+-  target_link_libraries(${program} core rt ${ZLIB_LIBRARIES} ${Boost_LIBRARIES})
++  target_link_libraries(${program} core rt ${ZLIB_LDFLAGS} ${Boost_LIBRARIES})
+ endforeach(program)
+ 
+ # Includes 
