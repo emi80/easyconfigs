@@ -1,0 +1,75 @@
+easyblock = "CMakeMake"
+
+name = 'InFusion'
+version = '0.7.1'
+commit = '2f09ec7'
+
+homepage = 'http://bitbucket.org/kokonech/infusion'
+description = """InFusion is a toolkit for fusion gene and chimeric transcript detection from RNA-seq data."""
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ['%s.tar.gz' % commit]
+source_urls = ['https://bitbucket.org/kokonech/infusion/get']
+
+srcdir = '../src'
+separate_build_dir = True
+
+preinstallopts = 'cd ../install && ./create_binary_zip.sh && tar xf _release/%(name)s-%(version)s-linux-x86_64.tar.gz -C %(installdir)s --strip-components=1; #'
+
+patches = [
+    'infusion-zlib.patch',
+    'infusion-install.patch'
+]
+
+dependencies = [
+    ('CMake', '2.8.4'),
+    ('zlib', '1.2.7'),
+    ('Boost', '1.55.0', '-Python-2.7.6'),
+    ('Bowtie2', '2.2.3'),
+    ('SAMtools', '0.1.19')
+]
+
+configopts = '-DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT=$EBROOTBOOST'
+
+sanity_check_paths = {
+    'files': [
+        "analyze_cluster_homogeneity",
+        "analyze_local_alignments",
+        "analyze_paired_alignments",
+        "annotate_fusions",
+        "argparse.py",
+        "build_fasta_index",
+        "cleanup_clusters",
+        "cluster_candidates",
+        "compute_read_stats",
+        "dump_clusters",
+        "extract_fusion_sequences",
+        "filter_fusion_candidates",
+        "filter_repeat_alignments",
+        "find_paired_mates",
+        "fusion.py",
+        "HISTORY",
+        "infusion",
+        "infusion.version",
+        "join_intron_separated_fusions",
+        "libcore.so",
+        "LICENSE",
+        "merge_mate_alignments",
+        "output_fusion_alignments",
+        "README",
+        "remove_homologs",
+        "resolve_multimapped",
+        "setup_reference_dataset.py"
+    ],
+    'dirs': [
+        "external"
+    ],
+}
+
+modextrapaths = {
+    'PATH': '',
+    'LD_LIBRARY_PATH': ''
+}
+
+moduleclass = 'bio'
