@@ -1,0 +1,42 @@
+easyblock = "MakeCp"
+
+name = 'CRISPR-Analyser'
+version = 'b9b6a24'
+
+homepage = 'https://github.com/htgt/CRISPR-Analyser'
+description = """Finding off targets for a CRISPR site as quick as possible"""
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ['%(version)s.tar.gz']
+source_urls = ['https://github.com/htgt/CRISPR-Analyser/archive/']
+
+buildopts = 'GCC_WARNS+="-fpermissive"'
+
+files_to_copy = [
+     'bin',
+     'conf',
+     'include',
+     'lib',
+     'vpiotr-mongoose-cpp'
+]
+
+sanity_check_paths = {
+    'files': [
+      "bin/crispr_analyser",
+      "bin/ots_server",
+      "bin/split.pl",
+      "bin/wge_off_targets.pl",
+    ],
+    'dirs': [
+      "bin",
+      "conf",
+      "include",
+      "lib",
+      "vpiotr-mongoose-cpp"
+    ],
+}
+
+parallel = 1
+
+moduleclass = 'bio'
