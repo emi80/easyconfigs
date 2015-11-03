@@ -1,7 +1,9 @@
---- a/install/create_binary_zip.sh	2015-10-28 16:53:28.106974553 +0100
-+++ b/install/create_binary_zip.sh	2015-10-29 11:08:45.511037054 +0100
+diff --git a/install/create_binary_zip.sh b/install/create_binary_zip.sh
+index 9ce8b05..16754f1 100755
+--- a/install/create_binary_zip.sh
++++ b/install/create_binary_zip.sh
 @@ -2,7 +2,7 @@
-
+ 
  PRODUCT_NAME="InFusion"
  VERSION=`cat ../infusion.version`
 -RELEASE_DIR=../build/Release
@@ -9,3 +11,25 @@
  OUT_DIR=_release
  APP_DIR_NAME="${PRODUCT_NAME}-${VERSION}"
  TARGET_APP_DIR=$OUT_DIR/$APP_DIR_NAME
+@@ -43,10 +43,12 @@ echo
+ echo copying InFusion binaries
+ 
+ INFUSION_TOOLS="analyze_local_alignments analyze_paired_alignments cluster_candidates
+-    merge_mate_alignments build_fasta_index filter_fusion_candidates output_fusion_alignments 
+-    find_paired_mates filter_repeat_alignments resolve_multimapped dump_clusters
++    merge_mate_alignments test_core test_interval_tree build_fasta_index
++    filter_fusion_candidates output_fusion_alignments find_paired_mates
++    filter_repeat_alignments resolve_multimapped dump_clusters
+     join_intron_separated_fusions annotate_fusions extract_fusion_sequences
+-    remove_homologs analyze_cluster_homogeneity cleanup_clusters compute_read_stats"
++    remove_homologs analyze_cluster_homogeneity cleanup_clusters
++    analyze_fusion_coverage compute_read_stats"
+ 
+ for toolname in $INFUSION_TOOLS
+ do
+@@ -85,5 +87,3 @@ cd ..
+ rm -rf $TARGET_APP_DIR
+ 
+ echo 
+-echo done creating bundle
+-echo
