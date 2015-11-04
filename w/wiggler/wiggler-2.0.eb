@@ -1,0 +1,34 @@
+easyblock = 'PackedBinary'
+
+name = 'wiggler'
+version = '2.0'
+
+homepage = 'https://code.google.com/p/align2rawsignal'
+description = """reads in a set of tagAlign/BAM files, filters out multi-mapping
+                  tags and creates a consolidated genome-wide signal file using
+                  various tag-shift and smoothing parameters as well as various
+                  normalization schemes"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://align2rawsignal.googlecode.com/files/']
+sources = ['align2rawsignal.%(version)s.tgz']
+
+dependencies = [
+  ('MCR', 'R2010b')
+]
+
+sanity_check_paths = {
+    'files': [
+        'bin/align2rawsignal',
+    ],
+    'dirs': [
+        'bin',
+        'doc',
+        'seq',
+        'src',
+        'umap'
+    ]
+}
+
+moduleclass = 'bio'
