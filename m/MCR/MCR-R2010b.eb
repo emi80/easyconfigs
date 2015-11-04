@@ -1,0 +1,42 @@
+easyblock = 'Binary'
+
+name = 'MCR'
+version = 'R2010b'
+
+homepage = 'http://www.mathworks.com/products/compiler/mcr/'
+description = """The MATLAB Runtime is a standalone set of shared libraries
+ that enables the execution of compiled MATLAB applications
+ or components on computers that do not have MATLAB installed."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://www.broadinstitute.org/~anshul/softwareRepo/']
+sources = ['MCR2010b.bin']
+
+install_cmd = './MCR2010b.bin -silent -P installLocation="%(installdir)s" -G licenseAccepted=true'
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': [
+        'v714/bin/glnxa64',
+        'v714/runtime/glnxa64',
+        'v714/sys/os/glnxa64',
+    ]
+}
+
+modextravars = {
+    'XAPPLERESDIR': '%(installdir)s/v714/X11/app-defaults',
+}
+
+modextrapaths = {
+    'LD_LIBRARY_PATH': [
+        'v714/bin/glnxa64',
+        'v714/runtime/glnxa64',
+        'v714/sys/os/glnxa64',
+        'v714/sys/java/jre/glnxa64/jre/lib/amd64/native_threads',
+        'v714/sys/java/jre/glnxa64/jre/lib/amd64/server',
+        'v714/sys/java/jre/glnxa64/jre/lib/amd64',
+    ],
+}
+
+moduleclass = 'math'
