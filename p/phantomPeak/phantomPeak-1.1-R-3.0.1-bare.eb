@@ -1,0 +1,56 @@
+easyblock = 'PackedBinary'
+
+name = 'phantomPeak'
+version = '1.1'
+
+homepage = 'https://code.google.com/p/phantompeakqualtools/'
+description = """Quick but highly informative enrichment and quality measures
+                 for ChIP-seq/DNase-seq/FAIRE-seq/MNase-seq data. It can also be
+                 used to obtain robust estimates of the predominant fragment
+                 length or characteristic tag shift values in these assays."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = [
+    'https://phantompeakqualtools.googlecode.com/files/',
+]
+sources = ['ccQualityControl.v.%(version)s.tar.gz']
+
+
+exts_defaultclass = 'RPackage'
+exts_filter = ("R -q --no-save", "library(%(ext_name)s)")
+exts_list = [
+    ('bitops','1.0-6', {
+        'source_urls': ['https://cran.fhcrc.org/src/contrib/'],
+        'source_tmpl': '%(name)s_%(version)s.tar.gz',
+    }),
+    ('caTools','1.17.1', {
+        'source_urls': ['https://cran.r-project.org/src/contrib/'],
+        'source_tmpl': '%(name)s_%(version)s.tar.gz',
+    }),
+    ('spp','1.10.1', {
+        'source_urls': ['http://www.broadinstitute.org/~anshul/softwareRepo/spp_package/'],
+        'source_tmpl': '%(name)s_%(version)s.tar.gz',
+    }),
+]
+
+r = 'R'
+rver = '3.0.1'
+rversuf = '-bare'
+
+versionsuffix = '-%s-%s%s' % (r, rver, rversuf)
+
+dependencies = [
+    (r, rver, rversuf),
+    # ('SAMtools', '0.1.19'),
+]
+
+sanity_check_paths = {
+    'files': [
+        'run_spp_nodups.R',
+        'run_spp.R',
+    ],
+    'dirs': []
+}
+
+moduleclass = 'bio'
