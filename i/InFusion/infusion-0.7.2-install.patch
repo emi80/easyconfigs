@@ -1,0 +1,13 @@
+diff --git a/install/create_binary_zip.sh b/install/create_binary_zip.sh
+index 9ce8b05..16754f1 100755
+--- a/install/create_binary_zip.sh
++++ b/install/create_binary_zip.sh
+@@ -2,7 +2,7 @@
+ 
+ PRODUCT_NAME="InFusion"
+ VERSION=`cat ../infusion.version`
+-RELEASE_DIR=../build/Release
++RELEASE_DIR=../../easybuild_obj
+ OUT_DIR=_release
+ APP_DIR_NAME="${PRODUCT_NAME}-${VERSION}"
+ TARGET_APP_DIR=$OUT_DIR/$APP_DIR_NAME
