@@ -1,0 +1,32 @@
+easyblock = 'ConfigureMake'
+
+name = 'maptools'
+version = '3.2'
+
+homepage = 'https://github.com/pervouchine/maptools'
+description = """maptools package contains a number of lift-over, alignment, and sequence retrieval tools"""
+
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/pervouchine/%(name)s/archive']
+
+preinstallopts = ['rm bin/*.o && cp -r bin %(installdir)s #']
+
+sanity_check_paths = {
+    'files': [
+        'bin/best_match',
+        'bin/getsegm',
+        'bin/getsegm2',
+        'bin/getwind',
+        'bin/map_agnostic',
+        'bin/map_single',
+        'bin/net_filter',
+        'bin/syntenic_filter',
+        'bin/transf'
+    ],
+    'dirs': ['bin']
+}
+
+moduleclass = 'bio'
+
