@@ -1,0 +1,46 @@
+diff --git makefile makefile
+index a07f97c..5b68cbc 100644
+--- makefile
++++ makefile
+@@ -2,6 +2,11 @@ LATEXDIR=latex/
+ GCC=g++
+ SAMTOOLS_DIR=samtools-0.1.18/
+ 
++LIBBAM=$(SAMTOOLS_DIR)/libbam.a
++INCLUDES=-I$(SAMTOOLS_DIR)
++
++LIBS=-lz
++
+ .PHONY: all clean test
+ 
+ all:  j_count b_count sjcount
+@@ -9,7 +14,7 @@ all:  j_count b_count sjcount
+ clean ::
+ 	rm -f -r j_count b_count sjcount progressbar.o
+ 
+-${SAMTOOLS_DIR}libbam.a:
++${LIBBAM}:
+ 	wget http://sourceforge.net/projects/samtools/files/samtools/0.1.18/samtools-0.1.18.tar.bz2
+ 	tar -xf samtools-0.1.18.tar.bz2
+ 	rm -f samtools-0.1.18.tar.bz2
+@@ -19,14 +24,14 @@ ${SAMTOOLS_DIR}libbam.a:
+ progressbar.o : progressbar.c progressbar.h
+ 	$(GCC) -c progressbar.c 
+ 
+-sjcount : sjcount.c progressbar.o ${SAMTOOLS_DIR}libbam.a
+-	$(GCC) -I ${SAMTOOLS_DIR} sjcount.c progressbar.o ${SAMTOOLS_DIR}libbam.a -lz -o sjcount
++sjcount : sjcount.c progressbar.o ${LIBBAM} 
++	$(GCC) $(INCLUDES) sjcount.c progressbar.o ${LIBBAM} ${LIBS} -o sjcount
+ 
+-j_count : j_count.c progressbar.o ${SAMTOOLS_DIR}libbam.a
+-	$(GCC) -I ${SAMTOOLS_DIR} j_count.c progressbar.o ${SAMTOOLS_DIR}libbam.a -lz -o j_count
++j_count : j_count.c progressbar.o ${LIBBAM}
++	$(GCC) $(INCLUDES) j_count.c progressbar.o ${LIBBAM} ${LIBS} -o j_count
+ 
+-b_count : b_count.c progressbar.o ${SAMTOOLS_DIR}libbam.a
+-	$(GCC) -I ${SAMTOOLS_DIR} b_count.c progressbar.o ${SAMTOOLS_DIR}libbam.a -lz -o b_count
++b_count : b_count.c progressbar.o ${LIBBAM}
++	$(GCC) $(INCLUDES) b_count.c progressbar.o ${LIBBAM} ${LIBS} -o b_count
+ 
+ ${LATEXDIR}sjcount.pdf : ${LATEXDIR}sjcount.tex
+ 	pdflatex -output-directory=${LATEXDIR} ${LATEXDIR}sjcount.tex

@@ -1,0 +1,45 @@
+easyblock = 'MakeCp'
+
+name = 'sjcount'
+version = '3.1'
+
+homepage = 'https://github.com/pervouchine/sjcount-full'
+description = """sjcount is a utility for fast Splice Junction quantification"""
+
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+
+sources = ['v%(version)s.zip']
+source_urls = ['https://github.com/pervouchine/sjcount-full/archive']
+
+dependencies = [
+    ('SAMtools', '0.1.19'),
+    ('zlib', '1.2.7')
+]
+
+patches = [
+    '3.1-makefile.patch',
+    '3.1-build.patch'
+]
+
+versionsuffix='-SAMtools-0.1.19'
+
+buildopts = [
+    'LIBBAM="$EBROOTSAMTOOLS/lib/libbam.a" INCLUDES="-I$EBROOTSAMTOOLS/include/bam/" LIBS="`pkg-config --libs zlib` -lpthread"'
+]
+
+files_to_copy = [
+    (['sjcount'],'bin'), 
+    (['b_count'],'bin'),
+    (['j_count'],'bin')
+]
+
+sanity_check_paths = {
+    'files': [
+        'bin/sjcount',
+        'bin/b_count',
+        'bin/j_count'
+    ],
+    'dirs': ['bin']
+}
+
+moduleclass = 'bio'

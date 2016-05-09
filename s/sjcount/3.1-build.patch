@@ -1,0 +1,57 @@
+diff --git b_count.c b_count.c
+index 812bf1c..f573202 100644
+--- b_count.c
++++ b_count.c
+@@ -242,7 +242,7 @@ int main(int argc,char* argv[]) {
+         curr_site[i] = &root_site[i];
+     }
+ 
+-    ssj_file = zipped ? gzopen(ssj_file_name,"r") : fopen(ssj_file_name,"r");
++    ssj_file = zipped ? (void*)gzopen(ssj_file_name,"r") : (void*)fopen(ssj_file_name,"r");
+     fprintf(log_file, "[Reading %s]", ssj_file_name);
+ 
+     fprintf(log_file, "[Reading %s", ssj_file_name);
+@@ -279,7 +279,7 @@ int main(int argc,char* argv[]) {
+         zipped = 0;
+     }
+     else {
+-        ssc_file = zipped ? gzopen(ssc_file_name, "w") : fopen(ssc_file_name, "w");
++        ssc_file = zipped ? (void*)gzopen(ssc_file_name, "w") : (void*)fopen(ssc_file_name, "w");
+         if(ssc_file == NULL) {
+             fprintf(log_file,"[ERROR: cannot write to %s, exiting]\n", ssc_file_name);
+ 	    exit(1);
+diff --git j_count.c j_count.c
+index 2d3d489..7ef11f7 100644
+--- j_count.c
++++ j_count.c
+@@ -252,7 +252,7 @@ int main(int argc,char* argv[]) {
+ 	zipped = 0;
+     }
+     else {
+-        ssj_file = zipped ? gzopen(ssj_file_name,"w") : fopen(ssj_file_name,"w");
++        ssj_file = zipped ? (void*)gzopen(ssj_file_name,"w") : (void*)fopen(ssj_file_name,"w");
+         if(ssj_file == NULL) {
+             fprintf(log_file,"[ERROR: cannot write to %s, exiting]\n", ssj_file_name);
+             exit(1);
+diff --git sjcount.c sjcount.c
+index d553498..045a81b 100644
+--- sjcount.c
++++ sjcount.c
+@@ -257,7 +257,7 @@ int main(int argc,char* argv[]) {
+ 	zipped = 0;
+     }
+     else {
+-        ssj_file = zipped ? gzopen(ssj_file_name,"w") : fopen(ssj_file_name,"w");
++        ssj_file = zipped ? (void*)gzopen(ssj_file_name,"w") : (void*)fopen(ssj_file_name,"w");
+         if(ssj_file == NULL) {
+             fprintf(log_file,"[ERROR: cannot write to %s, exiting]\n", ssj_file_name);
+             exit(1);
+@@ -407,7 +407,7 @@ int main(int argc,char* argv[]) {
+         return 0;
+     }
+     else {
+-        ssc_file = zipped ? gzopen(ssc_file_name, "w") : fopen(ssc_file_name, "w");
++        ssc_file = zipped ? (void*)gzopen(ssc_file_name, "w") : (void*)fopen(ssc_file_name, "w");
+         if(ssc_file == NULL) {
+             fprintf(log_file,"[ERROR: cannot write to %s, exiting]\n", ssc_file_name);
+ 	    exit(1);
