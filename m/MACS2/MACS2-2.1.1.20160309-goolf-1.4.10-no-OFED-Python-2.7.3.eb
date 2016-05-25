@@ -1,0 +1,33 @@
+easyblock = "PythonPackage"
+
+name = 'MACS2'
+version = '2.1.1.20160309'
+
+homepage = 'http://gemtools.github.io/'
+description = """A novel algorithm for identifying transcript factor binding sites."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+python = 'Python'
+pyver = '2.7.3'
+pyshortver = pyver[:3]
+versionsuffix = '-%s-%s' % (python, pyver)
+
+
+dependencies = [
+    (python, pyver),
+    ('Cython', '0.20.2', versionsuffix),
+]
+
+sanity_check_paths = {
+    'files': ['lib/python%s/site-packages/%%(name)s-%%(version)s-py%s-linux-x86_64.egg' % (pyshortver, pyshortver)],
+    'dirs': [],
+}
+
+
+options = {'modulename': 'MACS2'}
+
+moduleclass = 'bio'
