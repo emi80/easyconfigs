@@ -1,0 +1,61 @@
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics (SIB)
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = 'RSEM'
+version = '1.2.23'
+
+homepage = "http://deweylab.biostat.wisc.edu/rsem"
+description = """A software package for estimating gene and isoform expression levels from RNA-Seq data by Expectation-Maximization"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['https://github.com/deweylab/%(name)s/archive']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [('zlib','1.2.7')]
+
+patches = ['%(name)s-1.2.15-Makefile.patch']
+
+buildopts = ['CFLAGS="`pkg-config --cflags --libs zlib`"']
+
+binaries = [
+    "rsem-sam-validator",
+    "rsem-bam2readdepth",
+    "rsem-run-gibbs",
+    "rsem-prepare-reference",
+    "convert-sam-for-rsem",
+    "rsem-calculate-credibility-intervals",
+    "rsem-parse-alignments",
+    "rsem-gen-transcript-plots",
+    "rsem-get-unique",
+    "rsem-extract-reference-transcripts",
+    "rsem-scan-for-paired-end-reads",
+    "extract-transcript-to-gene-map-from-trinity",
+    "rsem-tbam2gbam",
+    "rsem-preref",
+    "rsem-plot-model",
+    "rsem-run-ebseq",
+    "rsem-bam2wig",
+    "rsem-build-read-index",
+    "rsem-control-fdr",
+    "rsem-plot-transcript-wiggles",
+    "rsem-synthesis-reference-transcripts",
+    "rsem-run-em",
+    "rsem-generate-data-matrix",
+    "rsem-generate-ngvector",
+    "rsem-calculate-expression",
+    "rsem-simulate-reads",
+    "rsem_perl_utils.pm",
+]
+
+files_to_copy = [(binaries, 'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in binaries],
+    'dirs': ['bin']
+}
+
+moduleclass = 'bio'
