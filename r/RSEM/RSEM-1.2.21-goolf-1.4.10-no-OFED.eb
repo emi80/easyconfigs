@@ -15,7 +15,10 @@ toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
 source_urls = ['http://deweylab.biostat.wisc.edu/rsem/src']
 sources = ['%(namelower)s-%(version)s.tar.gz']
 
-dependencies = [('zlib','1.2.7')]
+dependencies = [
+    ('ncurses','5.9')
+    ('zlib','1.2.7')
+]
 
 patches = ['%(name)s-1.2.15-Makefile.patch']
 
