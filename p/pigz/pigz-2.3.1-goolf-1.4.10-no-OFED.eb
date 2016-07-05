@@ -8,8 +8,8 @@ description = """A parallel implementation of gzip for modern multi-processor, m
 
 toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
 
-sources = ['%(name)s-%(version)s.tar.gz']
-source_urls = [homepage]
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/madler/%(name)s/archive']
 
 dependencies = [('zlib','1.2.7')]
 
