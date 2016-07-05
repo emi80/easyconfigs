@@ -55,7 +55,8 @@ exts_list = [
         'source_urls': ['https://pypi.python.org/packages/source/l/lockfile/'],
     }),
     ('Cython', '0.17.2', {
-        'source_urls': ['http://www.cython.org/release/'],
+        'source_tmpl': '%(version)s.tar.gz'
+        'source_urls': ['https://github.com/cython/cython/archive/'],
     }),
     ('dateutil', '2.1', {
         'source_tmpl': 'python-%(name)s-%(version)s.tar.gz',
