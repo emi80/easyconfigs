@@ -19,7 +19,7 @@ dependencies = [('zlib','1.2.7')]
 
 patches = ['%(name)s-%(version)s-makefile.patch']
 
-makeopts = ['CFLAGS="`pkg-config --cflags --libs zlib`"']
+buildopts = ['CFLAGS="`pkg-config --cflags --libs zlib`"']
 
 binaries = [
     "rsem-bam2readdepth",

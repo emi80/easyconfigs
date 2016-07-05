@@ -20,7 +20,7 @@ patches = [
     'STAR-2.3.1z9-override.patch'
 ]
 
-makeopts = [
+buildopts = [
     'LDFLAGS="-L$EBROOTSAMTOOLS/lib `pkg-config --libs zlib`" CCFLAGS_MAIN="-I $EBROOTSAMTOOLS/include/bam"',
 ]
 

@@ -26,7 +26,7 @@ dependencies = [
 
 files_to_copy = ["bin", "lib", "examples", (["bin/man1"], 'man')]
 
-makeopts = ['LIB="-lz -L$(echo $LD_LIBRARY_PATH | tr \':\' \'\n\' | grep zlib)"']
+buildopts = ['LIB="-lz -L$(echo $LD_LIBRARY_PATH | tr \':\' \'\n\' | grep zlib)"']
 
 modextrapaths = {'PERL5LIB': 'lib/perl5/site_perl'}
 

@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 versionsuffix='-SAMtools-0.1.19'
-makeopts = ['release SEARCHDIRS="-I$EBROOTSAMTOOLS/include/bam -I./gclib" LIBS+="$(pkg-config --libs zlib)-lbam -lpthread" BAM="$EBROOTSAMTOOLS/lib"']
+buildopts = ['release SEARCHDIRS="-I$EBROOTSAMTOOLS/include/bam -I./gclib" LIBS+="$(pkg-config --libs zlib)-lbam -lpthread" BAM="$EBROOTSAMTOOLS/lib"']
 
 files_to_copy = [(['stringtie'],'bin')]
 

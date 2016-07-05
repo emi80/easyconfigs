@@ -1,0 +1,11 @@
+--- samtools-0.1.19/bam_import.c.orig	2014-10-31 17:39:55.736408016 +0100
++++ samtools-0.1.19/bam_import.c	2014-10-31 17:38:26.127131484 +0100
+@@ -250,7 +250,7 @@
+ 			if (ret >= 0) z += str->l + 1;
+ 		} while (ret == 0);
+ 	}
+-	if (ret < 0) return -1;
++	if (ret <= 0) return -1;
+ 	++fp->n_lines;
+ 	doff = 0;
+ 

@@ -18,7 +18,7 @@ dependencies = [
 
 versionsuffix='-SAMtools-0.1.18'
 
-makeopts = ['SAMDIR="$EBROOTSAMTOOLS/lib/" OPTN="-I$EBROOTSAMTOOLS/include/bam `pkg-config --cflags --libs zlib`"']
+buildopts = ['SAMDIR="$EBROOTSAMTOOLS/lib/" OPTN="-I$EBROOTSAMTOOLS/include/bam `pkg-config --cflags --libs zlib`"']
 
 files_to_copy = [(['bamflag'],'bin'), (['bamflag2'],'bin')]
 
