@@ -1,0 +1,26 @@
+easyblock = 'ConfigureMake'
+
+name = 'bwtool'
+version = '1.0'
+
+homepage = 'https://github.com/CRG-Barcelona/bwtool'
+description = """A tool for bigWig files"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ["%(version)s.tar.gz"]
+source_urls = ['https://github.com/CRG-Barcelona/bwtool/archive']
+
+dependencies = [
+    ('libbeato', 'master'),
+]
+
+configopts = 'CFLAGS="-g -O0 -I${EBROOTLIBBEATO}/include" LDFLAGS=-L${EBROOTLIBBEATO}/lib'
+
+sanity_check_paths = {
+    'files': ['bin/bwtool'],
+    'dirs': ['bin'],
+}
+
+moduleclass = 'bio'

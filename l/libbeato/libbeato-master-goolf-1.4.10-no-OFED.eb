@@ -1,0 +1,20 @@
+easyblock = 'ConfigureMake'
+
+name = 'libbeato'
+version = 'master'
+
+homepage = 'https://github.com/CRG-Barcelona/libbeato'
+description = """Library combining some HTS stuff, core wiggle stuff, Jim Kent's libary."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ["%(version)s.tar.gz"]
+source_urls = ['https://github.com/CRG-Barcelona/libbeato/archive']
+
+sanity_check_paths = {
+    'files': [ 'lib/libbeato.a', 'lib/libjkweb.a' ],
+    'dirs': [ 'include', 'include/beato', 'include/jkweb', 'lib' ],
+}
+
+moduleclass = 'bio'
