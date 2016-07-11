@@ -1,0 +1,42 @@
+easyblock = 'MakeCp'
+
+name = 'augustus'
+version = '3.2.2'
+
+homepage = 'http://bioinf.uni-greifswald.de/augustus'
+description = """AUGUSTUS is a program that predicts genes in eukaryotic genomic sequences."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://bioinf.uni-greifswald.de/augustus/binaries']
+
+patches = ['%(name)s-%(version)s-compgenepred.patch']
+
+dependencies = [
+    ('BamTools', '2.3.0'),
+    ('Boost', '1.55.0', '-Python-2.7.6'),
+]
+
+files_to_copy = [
+    "bin", 
+    "config", 
+    "docs",
+    "examples",
+    "scripts"
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': files_to_copy,
+}
+
+modextrapaths = {
+    'PATH': ['bin', 'scripts'],
+}
+
+modextravars = {
+    'AUGUSTUS_CONFIG_PATH': '%(installdir)s/config', 
+}
+
+moduleclass = 'bio'
