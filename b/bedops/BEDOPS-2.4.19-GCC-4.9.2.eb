@@ -1,0 +1,75 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez, Wiktor Jurkowski
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+# Babraham Institute, UK
+
+easyblock = 'MakeCp'
+
+name = "BEDOPS"
+version = "2.4.19"
+
+homepage = 'https://github.com/bedops/bedops'
+description = """ BEDOPS is an open-source command-line toolkit that performs highly 
+ efficient and scalable Boolean and other set operations, statistical calculations, 
+ archiving, conversion and other management of genomic data of arbitrary scale."""
+
+# this application requires GCC-4.8.x or higher
+# be aware if you switch to a different toolchain
+toolchain = {'name': 'GCC', 'version': '4.9.2'}
+
+source_urls = ['https://github.com/bedops/bedops/archive/']
+sources = ['v%(version)s.tar.gz']
+
+builddependencies = [
+    ('zlib', '1.2.7', '-cpp'),
+    ('bzip2', '1.0.6'),
+    ('Jansson', '2.6'),
+]
+
+buildopts = ' MAKECMDGOALS=build LOCALJANSSONDIR=$EBROOTJANSSON LOCALBZIP2LIBDIR=$EBROOTBZIP2/lib LOCALBZIP2INCDIR=$EBROOTBZIP2/include LOCALZLIBINCDIR=$EBROOTZLIB/include LOCALZLIBLIB=$EBROOTZLIB/lib/libz.a && make install'
+
+bins = [
+    "bam2bed",
+    "bam2bed_gnuParallel",
+    "bam2bed_sge",
+    "bam2starch",
+    "bam2starch_gnuParallel",
+    "bam2starch_sge",
+    "bedextract",
+    "bedmap",
+    "bedops",
+    "closest-features",
+    "convert2bed",
+    "gff2bed",
+    "gff2starch",
+    "gtf2bed",
+    "gtf2starch",
+    "gvf2bed",
+    "gvf2starch",
+    "psl2bed",
+    "psl2starch",
+    "rmsk2bed",
+    "rmsk2starch",
+    "sam2bed",
+    "sam2starch",
+    "sort-bed",
+    "starch",
+    "starchcat",
+    "starchcluster_gnuParallel",
+    "starchcluster_sge",
+    "unstarch",
+    "vcf2bed",
+    "vcf2starch",
+    "wig2bed",
+    "wig2starch",
+]
+
+files_to_copy = ["bin"]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in bins],
+    'dirs': ["bin"]
+}
+
+moduleclass = 'bio'
