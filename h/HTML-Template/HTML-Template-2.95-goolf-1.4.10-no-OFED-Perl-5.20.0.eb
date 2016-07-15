@@ -1,0 +1,30 @@
+easyblock = 'PerlModule'
+
+name = 'HTML-Template'
+version = '2.95'
+
+homepage = 'http://search.cpan.org/~samtregar/HTML-Template-2.95/'
+description = """Perl module to use HTML Templates from CGI scripts"""
+
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+
+source_urls = ['http://search.cpan.org/CPAN/authors/id/W/WO/WONKO']
+sources = [SOURCE_TAR_GZ]
+
+perl = 'Perl'
+perlver = '5.20.0'
+versionsuffix = '-%s-%s' % (perl, perlver)
+
+dependencies = [
+    (perl, perlver),
+]
+
+options = {'modulename': 'HTML::Template'}
+
+perlmajver = perlver.split('.')[0]
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/perl%s/site_perl/%s/HTML' % (perlmajver, perlver)],
+}
+
+moduleclass = 'data'
