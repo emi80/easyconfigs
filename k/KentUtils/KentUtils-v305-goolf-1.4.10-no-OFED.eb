@@ -1,3 +1,5 @@
+easyblock = 'MakeCp'
+
 name = 'KentUtils'
 version = '305'
 
@@ -16,7 +18,9 @@ dependencies = [
     ('zlib', '1.2.7')
 ]
 
-buildopts = ['CFLAGS="`pkg-config --cflags --libs zlib`"']
+buildopts = ['libs userApps BINDIR=$PWD/bin CFLAGS="`pkg-config --cflags --libs zlib`"']
+
+start_dir = 'kent/src'
 
 files_to_copy = ['bin']
 

@@ -16,8 +16,6 @@ dependencies = [
     ('zlib', '1.2.7')
 ]
 
-prebuildopts = [ 'mkdir bin && ' ]
-
 buildopts = ['libs userApps BINDIR=$PWD/bin CFLAGS="`pkg-config --cflags --libs zlib`"']
 
 start_dir = 'kent/src'
