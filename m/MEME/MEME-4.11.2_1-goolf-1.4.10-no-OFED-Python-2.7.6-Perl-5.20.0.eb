@@ -28,17 +28,28 @@ toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
 sources = ['meme_%(version)s.tar.gz']
 source_urls = ['http://ebi.edu.au/ftp/software/MEME/%(version)s']
 
+python = 'Python'
+pythonver = '2.7.6'
+
 perl = 'Perl'
 perlver = '5.20.0'
-versionsuffix = '-%s-%s' % (perl, perlver)
+perlsuffix = '-%s-%s' % (perl, perlver)
+
+versionsuffix = '-%s-%s%s' % (python, pythonver, perlsuffix)
 
 dependencies = [
     ('libxml2', '2.9.1'),
     ('libxslt', '1.1.28'),
     ('zlib', '1.2.7'),
+    (python, pythonver),
     (perl, perlver),
-    ('XML-Parser', '2.41', versionsuffix),
-    ('HTML-Template','2.95', versionsuffix),
+    ('XML-Parser', '2.41', perlsuffix),
+    ('HTML-Template','2.95', perlsuffix),
+]
+
+postinstallcmds = [
+    'wget -O- http://meme-suite.org/meme-software/Databases/motifs/motif_databases.12.12.tgz | tar xz -C %(installdir)s/db',
+    'wget -O- http://meme-suite.org/meme-software/Databases/gomo/gomo_databases.3.2.tgz | tar xz -C %(installdir)s/db'
 ]
 
 sanity_check_paths = {
