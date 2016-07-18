@@ -6,7 +6,7 @@ version = '1.2.3'
 homepage = 'http://sammeth.net/confluence/display/FLUX/'
 description = """The Flux Capacitor is a computer program to quantify the expression of alternative isoforms."""
 
-toolchain = {'name': 'dummy', 'version': ''}
+toolchain = {'name': 'dummy', 'version': 'dummy'}
 
 source_urls = ['http://sammeth.net/artifactory/barna/barna/barna.capacitor/%(version)s']
 sources = ['%(name)s-%(version)s.tgz']
