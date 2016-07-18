@@ -10,7 +10,7 @@ toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
 sources = ['userApps.v%(version)s.src.tgz']
 source_urls = ['http://hgdownload.soe.ucsc.edu/admin/exe']
 
-patches = ['kent-utils-v305-makeDb.patch']
+patches = ['KentUtils-v305-makeDb.patch']
 
 dependencies = [
     ('zlib', '1.2.7')
