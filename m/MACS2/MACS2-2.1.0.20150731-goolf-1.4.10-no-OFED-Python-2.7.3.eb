@@ -3,7 +3,7 @@ easyblock = "PythonPackage"
 name = 'MACS2'
 version = '2.1.0.20150731'
 
-homepage = 'http://gemtools.github.io/'
+homepage = 'https://github.com/taoliu/MACS'
 description = """A novel algorithm for identifying transcript factor binding sites."""
 
 toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
