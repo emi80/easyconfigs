@@ -47,6 +47,9 @@ dependencies = [
     ('HTML-Template','2.95', perlsuffix),
 ]
 
+memeweb = "http://meme-suite.org"
+configopts = "--with-url=%s" % memeweb
+
 postinstallcmds = [
     'wget -O- http://meme-suite.org/meme-software/Databases/motifs/motif_databases.12.12.tgz | tar xz -C %(installdir)s/db',
     'wget -O- http://meme-suite.org/meme-software/Databases/gomo/gomo_databases.3.2.tgz | tar xz -C %(installdir)s/db'
