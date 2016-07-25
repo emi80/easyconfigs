@@ -1,0 +1,35 @@
+easyblock = "PythonPackage"
+
+name = 'NucleoATAC'
+version = '0.3.1'
+
+homepage = 'https://github.com/GreenleafLab/NucleoATAC'
+description = """Python package for calling nucleosomes using ATAC-Seq data"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ["https://github.com/GreenleafLab/NucleoATAC/archive"]
+sources = ["v%(version)s.tar.gz"]
+
+python = 'Python'
+pyver = '2.7.8'
+pyshortver = pyver[:3]
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('Cython', '0.24.1', versionsuffix),
+    ('scipy', '0.17.1',  versionsuffix),
+    ('pysam', '0.9.1.4', versionsuffix),
+    ('python-dateutil', '2.5.3', versionsuffix),
+]
+
+modules = ('nucleoatac', 'pyatac')
+
+sanity_check_paths = {
+    'files': ['bin/%s' % bin for bin in modules],
+    'dirs': ['lib/python%s/site-packages/%%(name)s-%%(version)s-py%s.egg/%s' % (pyshortver, pyshortver, module) for module in modules],
+}
+
+
+moduleclass = 'bio'

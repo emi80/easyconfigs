@@ -1,0 +1,32 @@
+easyblock = "PythonPackage"
+
+name = 'pysam'
+version = '0.9.1.4'
+
+homepage = 'https://pypi.python.org/pypi/pysam'
+description = """Samtools binding for python."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+python = 'Python'
+pyver = '2.7.8'
+pyshortver = '2.7'
+eggdir = '%%(name)s-%%(version)s-py%s-linux-x86_64.egg' % pyshortver
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('Cython', '0.24.1', versionsuffix),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%s/site-packages/%s/%%(name)s' % (pyshortver, eggdir)],
+}
+
+options = {'modulename': 'pysam'}
+
+moduleclass = 'bio'

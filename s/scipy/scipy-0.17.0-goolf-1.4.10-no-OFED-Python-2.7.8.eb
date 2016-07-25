@@ -1,0 +1,22 @@
+name = 'scipy'
+version = '0.17.1'
+
+homepage = 'http://www.scipy.org'
+description = """SciPy is a collection of mathematical algorithms and convenience
+ functions built on the Numpy extension for Python."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+toolchainopts = {'pic': True}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+python = 'Python'
+pyver = '2.7.8'
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+]
+
+moduleclass = 'math'
