@@ -1,0 +1,27 @@
+easyblock = "MakeCp"
+
+name = 'zerone'
+version = '449e828'
+
+homepage = 'https://github.com/nanakiksc/zerone'
+description = """ChIP-seq discretization and quality control"""
+toolchain = {'version': '1.4.10-no-OFED', 'name': 'goolf'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ['%(version)s.tar.gz']
+source_urls = ['https://github.com/nanakiksc/zerone/archive/']
+
+files_to_copy = [
+     (['zerone'], 'bin')
+]
+
+sanity_check_paths = {
+    'files': [
+      "bin/zerone",
+    ],
+    'dirs': [
+      "bin",
+    ],
+}
+
+moduleclass = 'bio'
