@@ -1,0 +1,31 @@
+easyblock = "PythonPackage"
+
+name = 'mechanize'
+version = '0.3.3'
+
+homepage = 'https://github.com/python-mechanize/mechanize'
+description = """Automate interaction with HTTP web servers"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+python = 'Python'
+pyver = '2.7.11'
+pyshortver = '2.7'
+eggdir = '%%(name)s-%%(version)s-py%s.egg' % pyshortver
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+]
+
+sanity_check_paths = {
+    'dirs': [],
+    'files': ['lib/python%s/site-packages/%s' % (pyshortver, eggdir)],
+}
+
+options = {'modulename': 'mechanize'}
+
+moduleclass = 'tools'
