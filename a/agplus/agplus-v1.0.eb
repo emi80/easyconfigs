@@ -1,0 +1,30 @@
+easyblock = 'PackedBinary'
+
+name = 'agplus'
+version = '1.0'
+
+homepage = 'https://github.com/kazumits/agplus'
+description = """a rapid and flexible tool for aggregation plots"""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10-no-OFED'}
+
+source_urls = ['https://github.com/kazumits/agplus/archive/']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [("BEDTools","2.26.0")]
+
+sanity_check_paths = {
+    'files': [
+        'agpdraw-line',
+        'agplus',
+        'assignExprGroup',
+        'bam2bwshifted',
+        'README.md',
+    ],
+    'dirs': [
+        'example',
+    ]
+}
+
+moduleclass = 'bio'
+
